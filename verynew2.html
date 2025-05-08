@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Learning Trek</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --primary: #2a5b7a;
+      --secondary: #e9c46a;
+      --light: #f9fafc;
+      --dark: #1a1a1a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: url('https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      background-attachment: fixed;
+      color: var(--dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(255, 255, 255, 0.85);
+      z-index: 0;
+    }
+
+    .container {
+      z-index: 2;
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .tagline {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+    }
+
+    .coming-soon {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 1.5rem 0;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1rem auto 2rem;
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .countdown div {
+      text-align: center;
+      min-width: 60px;
+    }
+
+    .countdown span {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .countdown small {
+      display: block;
+      font-size: 0.75rem;
+      color: #555;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
+      color: #333;
+    }
+
+    .cta-form {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+
+    .cta-form input[type="email"] {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-form button {
+      width: 100%;
+      background-color: var(--secondary);
+      color: var(--dark);
+      border: none;
+      padding: 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .cta-form button:hover {
+      background-color: #d4aa48;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .social-links a {
+      color: var(--primary);
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background-color: rgba(255, 255, 255, 0.7);
+      margin-top: auto;
+      z-index: 2;
+    }
+
+    .plane {
+      position: fixed;
+      width: 30px;
+      height: 30px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232a5b7a"><path d="M22 16.21v-1.895L14 8V4a2 2 0 0 0-4 0v4l-8 6.315v1.895l8-2.526V18l-2 2v2l3.5-1 3.5 1v-2l-2-2v-4.316l8 2.526z"/></svg>');
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 2.2rem;
+      }
+
+      .tagline {
+        font-size: 1.1rem;
+      }
+
+      .coming-soon {
+        font-size: 2rem;
+      }
+
+      .cta-form {
+        padding: 1rem;
+      }
+
+      .plane {
+        width: 20px;
+        height: 20px;
+      }
+
+      .countdown span {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <div class="logo">Learning Trek</div>
+    <div class="tagline">World is your classroom.</div>
+    <div class="coming-soon">Coming Soon</div>
+
+    <div class="countdown" id="countdown">
+      <div><span id="days">00</span><small>Days</small></div>
+      <div><span id="hours">00</span><small>Hours</small></div>
+      <div><span id="minutes">00</span><small>Minutes</small></div>
+      <div><span id="seconds">00</span><small>Seconds</small></div>
+    </div>
+
+    <div class="description">
+      We're crafting unforgettable educational journeys that combine immersive learning with breathtaking travel. Be ready to experience subjects like never before—live, hands-on, and around the world.
+    </div>
+
+    <div class="cta-form">
+      <form>
+        <input type="email" placeholder="Enter your email address" required />
+        <button type="submit">Notify Me</button>
+      </form>
+    </div>
+
+    <div class="social-links">
+      <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+
+  <footer>
+    All rights reserved © Kavas' Corporation 2025
+  </footer>
+
+  <!-- Planes Animation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const planeCount = 50;
+      const planes = [];
+
+      function createPlane() {
+        const plane = document.createElement('div');
+        plane.className = 'plane';
+        document.body.appendChild(plane);
+
+        let startX, startY, endX, endY;
+        const side = Math.floor(Math.random() * 4);
+
+        if (side === 0) {
+          startX = Math.random() * window.innerWidth;
+          startY = -50;
+          endX = Math.random() * window.innerWidth;
+          endY = window.innerHeight + 50;
+        } else if (side === 1) {
+          startX = window.innerWidth + 50;
+          startY = Math.random() * window.innerHeight;
+          endX = -50;
+          endY = Math.random() * window.innerHeight;
+        } else if (side === 2) {
+          startX = Math.random() * window.innerWidth;
+          startY = window.innerHeight + 50;
+          endX = Math.random() * window.innerWidth;
+          endY = -50;
+        } else {
+          startX = -50;
+          startY = Math.random() * window.innerHeight;
+          endX = window.innerWidth + 50;
+          endY = Math.random() * window.innerHeight;
+        }
+
+        const duration = 10000 + Math.random() * 20000;
+        plane.style.left = startX + 'px';
+        plane.style.top = startY + 'px';
+
+        const angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI;
+        plane.style.transform = `rotate(${angle}deg)`;
+
+        const delay = Math.random() * 15000;
+
+        const animation = plane.animate(
+          [
+            { left: startX + 'px', top: startY + 'px' },
+            { left: endX + 'px', top: endY + 'px' }
+          ],
+          {
+            duration: duration,
+            delay: delay,
+            iterations: Infinity
+          }
+        );
+
+        planes.push({ element: plane, animation });
+      }
+
+      for (let i = 0; i < planeCount; i++) {
+        createPlane();
+      }
+
+      window.addEventListener('resize', function () {
+        planes.forEach((plane) => {
+          plane.animation.cancel();
+          plane.element.remove();
+        });
+        planes.length = 0;
+        for (let i = 0; i < planeCount; i++) {
+          createPlane();
+        }
+      });
+    });
+  </script>
+
+  <!-- Countdown Timer -->
+  <script>
+    const launchDate = new Date("2025-08-01T00:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = launchDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "We’re live!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("days").textContent = days.toString().padStart(2, '0');
+      document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
